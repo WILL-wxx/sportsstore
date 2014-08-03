@@ -19,12 +19,17 @@
 				ng-class="getCategoryClass(item)">{{item}}</a>
 		</div>
 		<div class="col-xs-8">
-			<div class="well" ng-repeat="item in data.products | filter:categoryFilterFn">
+			<div	class="well" 
+					ng-repeat="item in data.products | filter:categoryFilterFn | range:selectedPage:pageSize">
 				<h3>
 					<strong>{{item.name}}</strong>
 					<span class="pull-right label label-primary">{{item.price | currency}}</span>
 				</h3>
 				<span class="lead">{{item.description}}</span>
+			</div>
+			<div class="pull-right btn-group">
+				<a class="btn btn-default"
+					ng-repeat="itme in data.products | pageCount:pageSize"></a>
 			</div>
 		</div>
 	</div>

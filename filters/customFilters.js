@@ -16,4 +16,14 @@
 			return data;
 		}
 	};
+})
+.filter("range",function($filter){
+	return function(data,pageIndex,pageSize){
+		var startIndex = (pageIndex-1)*pageSize;
+		if(data.size<startIndex){
+			return [];
+		}else{
+			return $filter("limitTo")();
+		}
+	};
 });
