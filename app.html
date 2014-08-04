@@ -29,7 +29,10 @@
 			</div>
 			<div class="pull-right btn-group">
 				<a class="btn btn-default"
-					ng-repeat="itme in data.products | pageCount:pageSize"></a>
+					ng-repeat="index in data.products |filter:categoryFilterFn| pageCountFt:pageSize"
+					ng-click="selectPage(index+1)"
+					ng-class="getPageClass(index + 1)"
+					>{{index+1}}</a>
 			</div>
 		</div>
 	</div>

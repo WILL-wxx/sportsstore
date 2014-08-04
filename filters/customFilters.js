@@ -23,7 +23,16 @@
 		if(data.size<startIndex){
 			return [];
 		}else{
-			return $filter("limitTo")();
+			return $filter("limitTo")(data.splice(startIndex), pageSize);
 		}
+	};
+})
+.filter("pageCountFt",function(){
+	return function(data,pageSize){
+		var result =[];
+		for (var i = 0; i < Math.ceil(data.length / pageSize); i++) {
+			result.push(i);
+		};
+		return result;
 	};
 });
