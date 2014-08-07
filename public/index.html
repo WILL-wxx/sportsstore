@@ -11,38 +11,11 @@
 	</div>
     <div class="alert alert-danger" 
            ng-show="data.error">
-        Error({{data.error}}). Products 加载失败.
+        Error({{data.error}}): Products 加载失败.
+        <a href="index.html" class="alert-link">Click here to try again</a>
     </div>
-
-	<div class="panel panel-default row" 
-        ng-controller="productListCtrl"
-        ng-hide="data.error">
-		<div class="col-xs-3">
-			<a class="btn btn-block btn-default btn-lg" 
-				ng-click="selectCategory()">All Product</a>
-			<a class="btn btn-block btn-default btn-lg" 
-				ng-repeat="item in data.products  | unique:'category' | orderBy: 'category' "
-				ng-click="selectCategory(item)"
-				ng-class="getCategoryClass(item)">{{item}}</a>
-		</div>
-		<div class="col-xs-8">
-			<div	class="well" 
-					ng-repeat="item in data.products | filter:categoryFilterFn | range:selectedPage:pageSize">
-				<h3>
-					<strong>{{item.name}}</strong>
-					<span class="pull-right label label-primary">{{item.price | currency}}</span>
-				</h3>
-				<span class="lead">{{item.description}}</span>
-			</div>
-			<div class="pull-right btn-group">
-				<a class="btn btn-default"
-					ng-repeat="index in data.products |filter:categoryFilterFn| pageCountFt:pageSize"
-					ng-click="selectPage(index+1)"
-					ng-class="getPageClass(index + 1)"
-					>{{index+1}}</a>
-			</div>
-		</div>
-	</div>
+    <ng-include src=" 'views/productList.html' "></ng-include>
+	
 </body>
 	<script src="jslib/angular.js"></script>
 	<script src="filters/customFilters.js"></script> 
