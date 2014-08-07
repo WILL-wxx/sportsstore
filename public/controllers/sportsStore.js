@@ -1,6 +1,6 @@
 ﻿angular.module("sportsStore", ["customFilters"]); // 两个参数表示新建一个module moduleName 不能重复
 angular.module("sportsStore") // 一个参数表示掉用 module  moduleName必须存在
-.constant("dataUrl","http://localhost:5000/products")
+.constant("dataUrl","http://localhost:2403/products/r")
 .controller("sportsStoreCtrl", function($scope,$http,dataUrl) {
 $scope.data = {
 			products: [{
